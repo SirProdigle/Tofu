@@ -1,0 +1,2 @@
+Should be created with jinko create middleware
+will auto apply to all funcs within a controller of the same name

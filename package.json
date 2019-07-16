@@ -1,0 +1,39 @@
+{
+  "name": "jinko",
+  "version": "1.0.0",
+  "description": "An opinionated MVC framework",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "bin": {
+    "jinko": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirProdigle/Jinko.git"
+  },
+  "keywords": [
+    "MVC",
+    "framework",
+    "opinionated",
+    "scaffolding"
+  ],
+  "author": "Prodigle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SirProdigle/Jinko/issues"
+  },
+  "homepage": "https://github.com/SirProdigle/Jinko#readme",
+  "dependencies": {
+    "caporal": "^1.2.0",
+    "colors": "latest",
+    "copy-dir": "^1.1.0",
+    "prompt": "^1.0.0",
+    "replace": "latest",
+    "shelljs": "^0.8.3"
+  }
+}

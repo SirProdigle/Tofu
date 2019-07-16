@@ -1,0 +1,12 @@
+[
+  {
+    "name":  "moustache",
+    "expressName": "Moustache",
+    "extension": "hbs"
+  },
+  {
+    "name":  "pug",
+    "expressName": "pug",
+    "extension": "pug"
+  }
+]
