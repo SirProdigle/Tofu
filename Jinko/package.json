@@ -4,7 +4,8 @@
   "description": "App created with Jinko",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": ""
   },
   "author": "Put your name here!",
   "dependencies": {
@@ -20,7 +21,6 @@
     "minimist": "latest",
     "mongoose": "^5.1.2",
     "morgan": "~1.9.0",
-    "to-bool": "0.0.1",
     "winston": "^3.2.1"
   },
   "bin": {
@@ -29,5 +29,6 @@
     "make-model": "System/bin/MakeModel.js",
     "make-timer": "System/bin/MakeTimer.js",
     "make-event": "System/bin/MakeEvent.js"
-  }
+  },
+  "devDependencies": {}
 }

@@ -1,5 +1,4 @@
 const path = require('path');
-const ToBool = require("to-bool");
 const config = {};
 
 config.express = require('./express');
