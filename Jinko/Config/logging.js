@@ -1,0 +1,1 @@
+//TODO outsource logging options to this script

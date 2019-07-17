@@ -4,8 +4,10 @@ Logger = require(`${approot}/Engine/Logger`);
 
 module.exports = {
 
+    /*
     CustomStartup: ()=>{
         Logger.verbose("Custom Startup Function 'CustomStartup'");
     }
+    */
 
 };

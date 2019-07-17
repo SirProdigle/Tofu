@@ -1,3 +1,5 @@
+//TODO capture -v here to enable logging mode for logger
+
 const approot = require("app-root-path");
 require('dotenv').config(`${approot}/.env`); // Needed to read env file
 const config = require('./Config'); //include our Config file as Config
@@ -8,9 +10,8 @@ const express = require('express'),
     morgan = require("morgan"),
     winston = require("winston"),
     Logger = require(approot + "/Engine/Logger");
-
-startup = require(approot + "/Engine/Startup");
-customStartup = require(approot + "/Middleware/Startup");
+    startup = require(approot + "/Engine/Startup");
+    customStartup = require(approot + "/Middleware/Startup");
 
 
 //Run through all the startup functions defined in Startup/System/Startup.js, they can only take in app as a param for this
