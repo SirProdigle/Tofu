@@ -30,5 +30,8 @@
     "make-timer": "System/bin/MakeTimer.js",
     "make-event": "System/bin/MakeEvent.js"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  }
 }
