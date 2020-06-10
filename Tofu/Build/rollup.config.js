@@ -1,13 +1,13 @@
 "use strict";
-const approot = require("app-root-path");
+const appRoot = require("app-root-path");
 import * as path from "path";
 import babel from "rollup-plugin-babel";
 import resolve from "rollup-plugin-node-resolve";
 
 module.exports = {
-    input: (approot + "/Resources/JS/**/*.js"),
+    input: (appRoot + "/Resources/JS/**/*.js"),
     output: {
-        file: (approot + "/Public/JS/app.js"),
+        file: (appRoot + "/Public/JS/app.js"),
         format: "umd",
         name: "standard",
     },

@@ -1,12 +1,12 @@
 const fs = require("fs");
-const approot = require("app-root-path");
+const appRoot = require("app-root-path");
 const config = require("../../Config");
 const express = require("express");
 const http = require("http");
 const helmet = require("helmet");
 const winston = require('winston');
 const morgan = require("morgan");
-const Logger = require(approot + "/Engine/Logger");
+const Logger = require(appRoot + "/Engine/Logger");
 module.exports = {
     
     DatabaseStartup: (app) => {
@@ -35,7 +35,7 @@ module.exports = {
             const hbs = require('express-hbs');
             // Use `.hbs` for extensions and find partials in `views/partials`.
             app.engine('hbs', hbs.express4({
-                partialsDir: config.views.directory + '/Partials'
+                partialsDir: config.express.viewDir + '/Partials'
             }));
             app.set('view engine', 'hbs');
         }
@@ -48,12 +48,11 @@ module.exports = {
         Logger.verbose("Express Setup Complete");
     },
 
-    //NOTE: because of the use of process.cwd, the app.js must be called from inside the base folder when using the node or npm start command
     LinkControllers: (app) => {
         Logger.verbose("Controller Linking Begin");
-        fs.readdirSync(process.cwd() + "/Controllers").forEach(function (file) {
+        fs.readdirSync(appRoot + "/Controllers").forEach(function (file) {
             if (file.substr(-3) === '.js') {
-                let router = require(approot + '/Controllers/' + file);
+                let router = require(appRoot + '/Controllers/' + file);
                 app.use("/" + router.path, router);
             }
         });

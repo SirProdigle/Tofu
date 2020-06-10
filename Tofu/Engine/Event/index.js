@@ -1,23 +1,34 @@
-const approot = require("app-root-path");
-const Logger = require(`${approot}/Engine/Logger`);
+const appRoot = require("app-root-path"), Logger = require(`${appRoot}/Engine/Logger`);
 
+//props should be a json object with key:value pairs for every required variable,
 class Event{
 
-    //TODO props should be a json of name:value array which we use to assign to the object, then the subclass can basically be empty
-    constructor(props){}
+    eventData = {};
 
-    FireEvent(listenerArray){
-        for (let i = 0; i <  listenerArray.length; i++) {
-            if(!typeof listenerArray[i] === "function" ){
-                Logger.error(listenerArray[i].name + " is not a function and is in the listeners for " + this.constructor.name);
-            }
-            else {
-                listenerArray[i](this);
-            }
-        }
+    constructor(props){
+        if(!props instanceof Object)
+            Logger.error("Event construction arguments should be a JSON object");
+        this.eventData = props;
     }
 
+    FireEvent(listenerArray) {
+        for (let i = 0; i < listenerArray.length; i++) {
+            if (!listenerArray[i] instanceof Function) {
+                Logger.error(listenerArray[i].name + " is not a function and is in the listeners for " + this.constructor.name);
+            } else if(!this.Verify()) {
+                Logger.error("Event data does not pass verify checks for " + this.constructor.name + ":\n" + this.eventData)
+            } else{
+                listenerArray[i](this.eventData);
+            }
+        }
 
+    }
+
+    //TODO for verify generation, create a verify function with the simple ability to add a list of "Key" strings that it will verify exist in the event data object
+    Verify() {
+        Logger.error("Called Verify on base Event. Please provide a Verify overload per Event subclass.")
+        return false;
+    }
 
 }
 

@@ -1,9 +1,9 @@
-const approot = require("app-root-path");
+const appRoot = require("app-root-path");
 const path = require("path");
 module.exports = {
   port: process.env.PORT || "443",
-  publicFolder: approot + '/Public',
+  publicFolder: appRoot + '/Public',
   forceHTTPS: process.env.FORCE_HTTPS || false,
-  viewDir: approot + '/Resources/Views',
+  viewDir: appRoot + '/Resources/Views',
   viewEngine: "<VIEW_ENGINE>"
 };
