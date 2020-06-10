@@ -9,12 +9,12 @@ prog
     .version('1.0.0')
     .command('create', 'Create a new application')
     .argument("<name>", "Name of the project being created")
-    .option("--no-examples","Create Jinko project without examples")
-    .argument("[viewEngine]", "View engine being used (jinko engines)", false)
+    .option("--no-examples","Create Tofu project without examples")
+    .argument("[viewEngine]", "View engine being used (Tofu engines)", false)
     .action(createCmd)
     .command("engines", "Show list of supported view engines")
     .action(enginesCmd)
-    .command("update", "Update a project to the latest Jinko template version")
+    .command("update", "Update a project to the latest Tofu template version")
     .option("--dry-run", "Show changes an update would make")
     .action(()=>{console.error("Update feature not yet implemented".red)});
 

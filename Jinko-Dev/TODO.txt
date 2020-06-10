@@ -1,4 +1,0 @@
-Same file structure as Jinko
-Any dev specific file/folders should go here,
-E.G the test suite for testing the actual framework, not user test code which is already in Jinko
-Code coverage etc

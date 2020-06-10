@@ -1,0 +1,1 @@
+Move generator code into Tofu main app, integrate with out cmd tool

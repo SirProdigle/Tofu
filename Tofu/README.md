@@ -1,9 +1,8 @@
-# Jinko - A Lightweight MVC Framework For NodeJS
-[NPM Package Repository](github.com/prodigle/jinko-NPM)
+# Tofu - A Lightweight MVC Framework For NodeJS
 
 Web Documentation Repository
 
-Jinko is an MVC framework for NodeJS heavily influenced by PHP Laravel. Jinko is planned to contain features such as:
+Tofu is an MVC framework for NodeJS heavily influenced by PHP Laravel. Tofu is planned to contain features such as:
 *   MVC Structure
 *   Console commands for quick scaffolding
 *   Timers
@@ -18,7 +17,7 @@ Jinko is an MVC framework for NodeJS heavily influenced by PHP Laravel. Jinko is
 
 
 #Use
-You can use Jinko by npm installing it! If you simply download these files, it will work but you won't have access to the console commands as they require npm link.
+You can use Tofu by npm installing it! If you simply download these files, it will work but you won't have access to the console commands as they require npm link.
 
 ### Console Commands
 * make-controller **name** **-mo**(model) **-mi**(middleware)

@@ -1,5 +1,5 @@
 {
-  "name": "jinko",
+  "name": "tofu",
   "version": "1.0.0",
   "description": "An opinionated MVC framework",
   "main": "index.js",
@@ -7,14 +7,14 @@
     "lib": "lib"
   },
   "bin": {
-    "jinko": "index.js"
+    "tofu": "index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SirProdigle/Jinko.git"
+    "url": "git+https://github.com/SirProdigle/Tofu.git"
   },
   "keywords": [
     "MVC",
@@ -25,15 +25,15 @@
   "author": "Prodigle",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SirProdigle/Jinko/issues"
+    "url": "https://github.com/SirProdigle/Tofu/issues"
   },
-  "homepage": "https://github.com/SirProdigle/Jinko#readme",
+  "homepage": "https://github.com/SirProdigle/Tofu#readme",
   "dependencies": {
-    "caporal": "^1.2.0",
-    "colors": "latest",
-    "copy-dir": "^1.1.0",
+    "caporal": "^1.4.0",
+    "colors": "^1.4.0",
+    "copy-dir": "^1.3.0",
     "prompt": "^1.0.0",
-    "replace": "latest",
-    "shelljs": "^0.8.3"
+    "replace": "^1.2.0",
+    "shelljs": "^0.8.4"
   }
 }

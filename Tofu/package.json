@@ -1,7 +1,7 @@
 {
-  "name": "jinko-app",
+  "name": "tofu-app",
   "version": "1.0.0",
-  "description": "App created with Jinko",
+  "description": "App created with Tofu",
   "private": true,
   "scripts": {
     "start": "node app.js",
