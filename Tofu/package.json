@@ -4,7 +4,7 @@
   "description": "App created with Tofu",
   "private": true,
   "scripts": {
-    "start": "node bin/app.js",
+    "start": "node Bin/app.js",
     "build": ""
   },
   "author": "Put your name here!",
@@ -22,13 +22,6 @@
     "mongoose": "^5.1.2",
     "morgan": "~1.9.0",
     "winston": "^3.2.1"
-  },
-  "bin": {
-    "make-controller": "System/bin/MakeController.js",
-    "make-middleware": "System/bin/MakeMiddleware.js",
-    "make-model": "System/bin/MakeModel.js",
-    "make-timer": "System/bin/MakeTimer.js",
-    "make-event": "System/bin/MakeEvent.js"
   },
   "devDependencies": {
     "rollup-plugin-babel": "^4.3.3",

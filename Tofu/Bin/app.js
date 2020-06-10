@@ -1,8 +1,6 @@
-//TODO capture -v here to enable logging mode for logger
-
 const appRoot = require("app-root-path");
 require('dotenv').config(`${appRoot}/.env`); // Needed to read env file
-const config = require('../Config'); //include our Config file as Config
+const config = require(`${appRoot}/Config`); //include our Config file as Config
 const express = require('express'),
     http = require('http'), //http for server
     fs = require('fs'), //file system for dynamically reading Controllers

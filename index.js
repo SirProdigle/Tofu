@@ -5,6 +5,8 @@ const createCmd = require('./lib/create');
 const enginesCmd = require('./lib/engines');
 const update = require('./lib/update');
 const makeCmd = require('./lib/make');
+const CWD = require('./lib/Helpers/FindRoot')
+const fs = require("fs");
 
 prog
     .version('0.0.1')
