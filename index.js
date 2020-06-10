@@ -6,7 +6,7 @@ const enginesCmd = require('./lib/engines');
 const update = require('./lib/update');
 
 prog
-    .version('1.0.0')
+    .version('0.0.1')
     .command('create', 'Create a new application')
     .argument("<name>", "Name of the project being created")
     .option("--no-examples","Create Tofu project without examples")
