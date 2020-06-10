@@ -24,7 +24,6 @@ class Event{
 
     }
 
-    //TODO for verify generation, create a verify function with the simple ability to add a list of "Key" strings that it will verify exist in the event data object
     Verify() {
         Logger.error("Called Verify on base Event. Please provide a Verify overload per Event subclass.")
         return false;
