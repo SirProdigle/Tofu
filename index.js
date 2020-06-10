@@ -9,7 +9,7 @@ prog
     .version('0.0.1')
     .command('create', 'Create a new application')
     .argument("<name>", "Name of the project being created")
-    .option("--no-examples","Create Tofu project without examples")
+    .option("--no-examples","Create Tofu project without examples") //Options are checked as options['noExamples']
     .argument("[viewEngine]", "View engine being used (Tofu engines)", false)
     .action(createCmd)
     .command("engines", "Show list of supported view engines")
