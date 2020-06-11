@@ -1,11 +1,11 @@
 [
   {
-    "name":  "moustache",
-    "expressName": "Moustache",
+    "name":  ["handlebars","hbs"],
+    "expressName": "hbs",
     "extension": "hbs"
   },
   {
-    "name":  "pug",
+    "name":  ["pug"],
     "expressName": "pug",
     "extension": "pug"
   }
