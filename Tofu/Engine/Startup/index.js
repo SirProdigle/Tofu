@@ -30,7 +30,7 @@ module.exports = {
 
     SetExpressVariables: (app) => {
         Logger.verbose("Express Setup Begin");
-        app.set('views', config.express.directory); //Set view path, eg rendering users/index renders path/users/index
+        app.set('views', config.express.viewDir); //Set view path, eg rendering users/index renders path/users/index
         if (config.express.viewEngine === "express-hbs") {
             const hbs = require('express-hbs');
             // Use `.hbs` for extensions and find partials in `views/partials`.
