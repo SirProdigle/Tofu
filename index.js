@@ -5,7 +5,7 @@ const createCmd = require('./lib/create');
 const enginesCmd = require('./lib/engines');
 const update = require('./lib/update');
 const makeCmd = require('./lib/make');
-const CWD = require('./lib/Helpers/FindRoot')
+const setCmd = require("./lib/set");
 const fs = require("fs");
 
 prog
@@ -15,7 +15,7 @@ prog
     .option("--no-examples","Create Tofu project without examples") //Options are checked as options['noExamples']
     .argument("[viewEngine]", "View engine being used (Tofu engines)", false)
     .action(createCmd)
-    .command("engines", "Show list of supported view engines")
+    .command("show engines", "Show list of supported view engines")
     .action(enginesCmd)
     .command("update", "Update a project to the latest Tofu template version")
     .option("--dry-run", "Show changes an update would make")
@@ -26,6 +26,10 @@ prog
         "all")
     .option("--crud","Create boilerplate CRUD functionality")
     .action(makeCmd)
+    .command("set", "Set a Tofu setting for the current project")
+    .argument("<option>", "Use tofu show options for a full list")
+    .argument("<value>", "Value to set")
+    .action(setCmd);
     ;
 
 
