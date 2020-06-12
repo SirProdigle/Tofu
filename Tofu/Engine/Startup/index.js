@@ -12,7 +12,7 @@ module.exports = {
     DatabaseStartup: (app) => {
         Logger.verbose("Database Startup Begin");
         if(!config.db.enabled) {
-            Logger.warn("Database Disabled, Database Setup Complete");
+            Logger.warn("Database Disabled, Continuing");
             return;
         }
         const mongoose = require('mongoose');
