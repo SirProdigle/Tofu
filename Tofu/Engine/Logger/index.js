@@ -1,8 +1,10 @@
-var appRoot = require('app-root-path');
-var winston = require('winston');
+const appRoot = require('app-root-path');
+const winston = require('winston');
+const colorizer = winston.format.colorize()
+//TODO define files for e.g just HTTP logs
 
 // define the custom settings for each transport (file, console)
-var options = {
+const options = {
     file: {
         level: 'info',
         filename: `${appRoot}/logs/app.log`,
@@ -15,8 +17,13 @@ var options = {
     console: {
         level: 'debug',
         handleExceptions: true,
-        json: false,
-        colorize: true,
+        format: winston.format.combine(
+            winston.format.timestamp({format: "YYYY-MM-DD HH:mm:ss"}),
+            winston.format.simple(),
+            winston.format.printf(msg =>
+                colorizer.colorize(msg.level, `${msg.timestamp} - ${msg.level}: ${msg.message}`)
+            ),
+        )
     },
 };
 
@@ -33,7 +40,7 @@ const logger = new winston.createLogger({
 logger.stream = {
     write: function(message, encoding) {
         // use the 'info' log level so the output will be picked up by both transports (file and console)
-        logger.info(message);
+        logger.http(message);
     },
 };
 
