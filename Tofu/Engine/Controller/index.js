@@ -7,7 +7,8 @@ class Controller {
     //Path is e.g blog so the /blog that this controller acts for
     constructor(path = null) {
         if (path == null) {
-            throw new Error('No controller path found in super(). Expects e.g super("blogs"');
+            Logger.error(`No controller path found in ${this.constructor.name}::super(). Expects e.g super("blogs")`);
+            process.exit(1);
         }
         this.router = express.Router([]);
         this.router.path = path;
