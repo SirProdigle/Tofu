@@ -35,7 +35,7 @@
     "copy-dir": "^1.3.0",
     "node-cmd": "^3.0.0",
     "prompt": "^1.0.0",
-    "replace": "^1.2.0",
+    "replace-in-file": "^6.1.0",
     "rimraf": "latest",
     "shelljs": "^0.8.4"
   }
