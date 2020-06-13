@@ -24,15 +24,14 @@ prog
     .action(()=>{console.error("Update feature not yet implemented".red)})
     .command("make", "Generate an MVC component",)
     .argument("<name>","Prefix for Controller/Middleware (e.g User => UserController)")
-    .argument('[all|controller|model|middleware]...', "Type of unit to generate",/^controller|model|middleware|all$/,
-        "all")
+    .argument('[types]...', "Types of units to generate:\n" +"mvc".magenta.bold + " | controller | model | middleware | event | timer | service".magenta,["","mvc","controller","model","middleware","event","timer","service"],
+        "mvc")
     .option("--crud","Create boilerplate CRUD functionality")
     .action(makeCmd)
     .command("set", "Set a Tofu setting for the current project")
     .argument("<option>", "Use tofu show options for a full list")
     .argument("<value>", "Value to set")
     .action(setCmd);
-    ;
 
 
 prog.parse(process.argv);
