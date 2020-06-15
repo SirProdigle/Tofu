@@ -1,33 +1,29 @@
 //TODO add some startup code that auto makes and schedules timers in startup sequence
 const appRoot = require("app-root-path");
 const Logger = require(`${appRoot}/Engine/Logger`);
+const TUtils = require("./Utils");
+
 class Timer {
-    static ACTIVE_TIMERS = [];
-    requiredKeys = [];
-    time = 1000000;
-    options = {
-        interval: false,
-        immediate: false
-    };
+    static ACTIVE_TIMERS = {};
     running = false;
 
     constructor(data = null, name = null, timeOverride = null) {
-        this.data = data == null ? this.data : data;
-        this.name = name == null ? this.name : name
-        if (timeOverride !== null && timeOverride !== typeof TimerTime) {
-            console.error(`timeOverride for ${this.constructor.name} must be of type TimerTime`)
-            if (process.env.NODE_ENV !== "production")
-                process.exit(1);
-        }
-        this.time =timeOverride == null? this.time : timeOverride.time;
-        if(!this.Verify()) {
-            Logger.error(`${this.constructor.name} failed to verify`);
-            if(process.env.NODE_ENV !== "production")
-                process.exit(1);
+       if(data !== null)
+           this.data = data;
+       if(name !== null)
+           this.name = name;
+
+        if(timeOverride != null) {
+            if(typeof (timeOverride) === TUtils.TimerTime) {
+                this.time = timeOverride.time;
+            }
+            else {
+                this.time = timeOverride
+            }
         }
     }
 
-    OnTick() {
+    OnTick(obj) {
         Logger.error(`OnTick has not been overridden for ${this.constructor.name}`)
     }
 
@@ -39,7 +35,12 @@ class Timer {
     }
 
     Schedule() {
-        //If interval then set interval else set timeout
+        if(this.Verify() === false) {
+            Logger.error(`${this.constructor.name} failed to verify. Data: ${JSON.stringify(this.data)}`);
+            if(process.env.NODE_ENV !== "production")
+                process.exit(1);
+            return;
+        }
         if (this.options.immediate)
             this.RunTimer()
         if (this.options.interval)
@@ -49,7 +50,6 @@ class Timer {
         }
         this.running = true;
         Timer.ACTIVE_TIMERS[this.name] = this;
-        //Add to table
 
 
     }
@@ -78,8 +78,8 @@ class Timer {
     }
 
     Verify() {
-        Logger.error(`Called Verify on base Timer for ${this.constructor.name}. Please provide a Verify overload per Timer subclass.`)
-        return false
+        Logger.error(`Called Verify on base Timer for ${this.constructor.name}. Please provide a Verify overload per Timer subclass.`);
+        return false;
     }
 }
 
