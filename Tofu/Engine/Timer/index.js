@@ -1,23 +1,30 @@
 //TODO add some startup code that auto makes and schedules timers in startup sequence
-
+const appRoot = require("app-root-path");
+const Logger = require(`${appRoot}/Engine/Logger`);
 class Timer {
     static ACTIVE_TIMERS = [];
+    requiredKeys = [];
+    time = 1000000;
     options = {
         interval: false,
         immediate: false
     };
     running = false;
 
-    constructor(data, name, timeOverride) {
-        this.data = data;
-        this.name = name;
-        if (timeOverride !== typeof TimerTime) {
+    constructor(data = null, name = null, timeOverride = null) {
+        this.data = data == null ? this.data : data;
+        this.name = name == null ? this.name : name
+        if (timeOverride !== null && timeOverride !== typeof TimerTime) {
             console.error(`timeOverride for ${this.constructor.name} must be of type TimerTime`)
             if (process.env.NODE_ENV !== "production")
                 process.exit(1);
         }
-        this.time = timeOverride.time;
-        this.Verify()
+        this.time =timeOverride == null? this.time : timeOverride.time;
+        if(!this.Verify()) {
+            Logger.error(`${this.constructor.name} failed to verify`);
+            if(process.env.NODE_ENV !== "production")
+                process.exit(1);
+        }
     }
 
     OnTick() {
@@ -25,25 +32,26 @@ class Timer {
     }
 
     RunTimer() {
-        this.OnTick();
-        if (!options.interval) {
-            //Remove from table
-            delete this;
+        this.OnTick(this);
+        if (!this.options.interval) {
+            delete Timer.ACTIVE_TIMERS[this.name];
         }
     }
 
     Schedule() {
         //If interval then set interval else set timeout
-        if (this.options.immediate) {
+        if (this.options.immediate)
             this.RunTimer()
-        }
         if (this.options.interval)
-            this.jsObject = setInterval(this.RunTimer, this.time);
+            this.jsObject = setInterval(() => this.RunTimer(), this.time);
         else {
-            this.jsObject = setTimeout(this.RunTimer, this.time);
+            this.jsObject = setTimeout(() =>this.RunTimer(), this.time);
         }
         this.running = true;
         Timer.ACTIVE_TIMERS[this.name] = this;
+        //Add to table
+
+
     }
 
     Disable() {
