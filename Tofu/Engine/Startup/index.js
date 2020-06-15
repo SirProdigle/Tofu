@@ -16,7 +16,8 @@ module.exports = {
             return;
         }
         const mongoose = require('mongoose');
-        mongoose.connect(config.db.host).catch(function () {
+        //fixme production mode tofu will error if no db given. Apps may not use db
+        mongoose.connect(config.db.host).catch( (err) => {
             if (process.env.NODE_ENV === "production") {
                 Logger.error("Failed to connect to mongoDB host: " + config.db.host + "\nClosing Down Node Server");
                 process.exit();
@@ -31,7 +32,7 @@ module.exports = {
     SetExpressVariables: (app) => {
         Logger.verbose("Express Setup Begin");
         app.set('views', config.express.viewDir); //Set view path, eg rendering users/index renders path/users/index
-        if (config.express.viewEngine === "express-hbs") {
+        if (config.express.viewEngine === "hbs") {
             const hbs = require('express-hbs');
             // Use `.hbs` for extensions and find partials in `views/partials`.
             app.engine('hbs', hbs.express4({
