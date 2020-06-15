@@ -3,7 +3,7 @@ const Controller = require(`${appRoot}/Engine/Controller`);
        
     class HomeController extends Controller {
         constructor() {
-            super();
+            super('/');
             
             this.router.get('/', (req, res) => {
                 res.send("Welcome to Tofu!");
