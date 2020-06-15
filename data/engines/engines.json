@@ -1,12 +1,17 @@
 [
-  {
-    "name":  ["handlebars","hbs"],
-    "expressName": "hbs",
-    "extension": "hbs"
-  },
-  {
-    "name":  ["pug"],
-    "expressName": "pug",
-    "extension": "pug"
-  }
-]
+    {
+      "name":  ["handlebars","hbs"],
+      "expressName": "hbs",
+      "extension": "hbs"
+    },
+    {
+      "name":  ["pug"],
+      "expressName": "pug",
+      "extension": "pug"
+    },
+    {
+      "name": ["ejs"],
+      "expressName": "ejs",
+      "extension": "ejs"
+    }
+  ]
