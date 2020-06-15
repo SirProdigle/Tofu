@@ -4,7 +4,7 @@
   "description": "App created with Tofu",
   "private": true,
   "scripts": {
-    "start": "node Bin/app.js",
+    "start": "node Engine/Bin/app.js",
     "build": ""
   },
   "author": "Put your name here!",
