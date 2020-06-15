@@ -2,7 +2,6 @@
 
 class Timer {
     static ACTIVE_TIMERS = [];
-    time = 0;
     options = {
         interval: false,
         immediate: false
@@ -35,8 +34,9 @@ class Timer {
 
     Schedule() {
         //If interval then set interval else set timeout
-        if (this.options.immediate)
+        if (this.options.immediate) {
             this.RunTimer()
+        }
         if (this.options.interval)
             this.jsObject = setInterval(this.RunTimer, this.time);
         else {
@@ -44,9 +44,6 @@ class Timer {
         }
         this.running = true;
         Timer.ACTIVE_TIMERS[this.name] = this;
-        //Add to table
-
-
     }
 
     Disable() {
