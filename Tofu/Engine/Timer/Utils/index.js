@@ -1,53 +1,83 @@
-//FIXME make all these work with obj{obj,obj,obj} systems instead of [obj,obj] since that doesn't work
+
+
 function GetTimer(name) {
-        const appRoot = require("app-root-path");
-        const Timer = require(`${appRoot}/Engine/Timer`);
-        return Timer.ACTIVE_TIMERS[name];
-    }
+    const appRoot = require("app-root-path");
+    const Timer = require(`${appRoot}/Engine/Timer`);
+    return Timer.ACTIVE_TIMERS[name];
+}
 
-    function DisableActiveTimer(name) {
-        const appRoot = require("app-root-path");
-        const Timer = require(`${appRoot}/Engine/Timer`);
-        Timer.ACTIVE_TIMERS[name].Disable();
-    }
+function DisableTimer(name) {
+    const appRoot = require("app-root-path");
+    const Timer = require(`${appRoot}/Engine/Timer`);
+    Timer.ACTIVE_TIMERS[name].Disable();
+}
 
-    function EnableActiveTimer(name) {
-        const appRoot = require("app-root-path");
-        const Timer = require(`${appRoot}/Engine/Timer`);
-        Timer.ACTIVE_TIMERS[name].Enable();
-    }
+function EnableTimer(name) {
+    const appRoot = require("app-root-path");
+    const Timer = require(`${appRoot}/Engine/Timer`);
+    Timer.ACTIVE_TIMERS[name].Enable();
+}
 
-    function GetAllActiveTimers() {
-        const appRoot = require("app-root-path");
-        const Timer = require(`${appRoot}/Engine/Timer`);
-        console.log(Timer.ACTIVE_TIMERS);
-        return Timer.ACTIVE_TIMERS.filter(t => {
-            return true;
-        })
-    }
+function GetAllTimers() {
+    const appRoot = require("app-root-path");
+    const Timer = require(`${appRoot}/Engine/Timer`);
+    return Timer.ACTIVE_TIMERS;
+}
 
-    function GetAllInactiveTimers() {
-        const appRoot = require("app-root-path");
-        const Timer = require(`${appRoot}/Engine/Timer`);
-        return Timer.ACTIVE_TIMERS.filter(t => !t.running)
-    }
+function GetAllActiveTimers() {
+    const appRoot = require("app-root-path");
+    const Timer = require(`${appRoot}/Engine/Timer`);
+    let activeTimers = [];
+    Timer.ACTIVE_TIMERS.forEach((timer) => {
+        if (timer.running)
+            activeTimers.push(timer);
+    })
+    return activeTimers;
+}
 
-    function EnableAllTimers() {
-        const appRoot = require("app-root-path");
-        const Timer = require(`${appRoot}/Engine/Timer`);
-        Timer.ACTIVE_TIMERS.map(t => t.Enable())
-    }
+function GetAllInactiveTimers() {
+    const appRoot = require("app-root-path");
+    const Timer = require(`${appRoot}/Engine/Timer`);
+    let inactiveTimers = [];
+    Timer.ACTIVE_TIMERS.forEach((timer) => {
+        if (!timer.running)
+            inactiveTimers.push(timer);
+    })
+    return inactiveTimers;
+}
 
-    function DisableAllTimers() {
-        const appRoot = require("app-root-path");
-        const Timer = require(`${appRoot}/Engine/Timer`);
-        Timer.ACTIVE_TIMERS.map(t => t.Disable())
+function EnableAllTimers() {
+    const appRoot = require("app-root-path");
+    const Timer = require(`${appRoot}/Engine/Timer`);
+    Timer.ACTIVE_TIMERS.forEach(t => t.Enable())
+}
+
+function DisableAllTimers() {
+    const appRoot = require("app-root-path");
+    const Timer = require(`${appRoot}/Engine/Timer`);
+    Timer.ACTIVE_TIMERS.forEach(t => t.Disable())
+}
+
+function IsActive(name) {
+    const appRoot = require("app-root-path");
+    const Timer = require(`${appRoot}/Engine/Timer`);
+    return Timer.ACTIVE_TIMERS[name].running;
+}
+
+class TimerTime {
+    constructor(secs, mins, hrs, days) {
+        this.time = (secs + (mins * 60) + (hrs * 60 * 60) + (days * 24 * 60 * 60)) * 1000; //ms time
     }
-    class TimerTime{
-        constructor(secs,mins,hrs,days) {
-            this.time = (secs + (mins*60) + (hrs * 60 * 60) + (days * 24 * 60 * 60)) * 1000; //ms time
-        }
-    }
+}
 module.exports = {
-        GetTimer,DisableActiveTimer,EnableActiveTimer,GetAllInactiveTimers,GetAllActiveTimers,EnableAllTimers,DisableAllTimers,TimerTime
+    GetTimer,
+    DisableActiveTimer: DisableTimer,
+    EnableActiveTimer: EnableTimer,
+    GetAllInactiveTimers,
+    GetAllActiveTimers,
+    EnableAllTimers,
+    DisableAllTimers,
+    GetAllTimers,
+    IsActive,
+    TimerTime,
 }

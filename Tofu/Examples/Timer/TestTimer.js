@@ -1,4 +1,5 @@
-const Timer = require("../Engine/Timer");
+const appRoot = require("app-root-path")
+const Timer = require(`${appRoot}/Engine/Timer`);
 
 class TestTimer extends Timer{
     //All values below are default values, they are overridden using the constructor parameters

@@ -5,19 +5,18 @@ const TUtils = require("./Utils");
 
 class Timer {
     static ACTIVE_TIMERS = {};
+
     running = false;
 
     constructor(data = null, name = null, timeOverride = null) {
-       if(data !== null)
-           this.data = data;
-       if(name !== null)
-           this.name = name;
-
-        if(timeOverride != null) {
-            if(typeof (timeOverride) === TUtils.TimerTime) {
+        if (data !== null)
+            this.data = data;
+        if (name !== null)
+            this.name = name;
+        if (timeOverride != null) {
+            if (typeof (timeOverride) === TUtils.TimerTime) {
                 this.time = timeOverride.time;
-            }
-            else {
+            } else {
                 this.time = timeOverride
             }
         }
@@ -31,13 +30,14 @@ class Timer {
         this.OnTick(this);
         if (!this.options.interval) {
             delete Timer.ACTIVE_TIMERS[this.name];
+            delete this;
         }
     }
 
     Schedule() {
-        if(this.Verify() === false) {
+        if (this.Verify() === false) {
             Logger.error(`${this.constructor.name} failed to verify. Data: ${JSON.stringify(this.data)}`);
-            if(process.env.NODE_ENV !== "production")
+            if (process.env.NODE_ENV !== "production")
                 process.exit(1);
             return;
         }
@@ -46,7 +46,7 @@ class Timer {
         if (this.options.interval)
             this.jsObject = setInterval(() => this.RunTimer(), this.time);
         else {
-            this.jsObject = setTimeout(() =>this.RunTimer(), this.time);
+            this.jsObject = setTimeout(() => this.RunTimer(), this.time);
         }
         this.running = true;
         Timer.ACTIVE_TIMERS[this.name] = this;
@@ -55,7 +55,7 @@ class Timer {
     }
 
     Disable() {
-        if(!this.running)
+        if (!this.running)
             return;
         if (this.options.interval)
             clearInterval(this.jsObject);
@@ -66,13 +66,13 @@ class Timer {
         this.jsObject = null;
     }
 
-    Enable(){
-        if(this.running)
+    Enable() {
+        if (this.running)
             return;
         if (this.options.interval)
-            this.jsObject = setInterval(this.RunTimer,this.time);
+            this.jsObject = setInterval(this.RunTimer, this.time);
         else {
-            this.jsObject = setTimeout(this.RunTimer,this.time);
+            this.jsObject = setTimeout(this.RunTimer, this.time);
         }
         this.running = false;
     }
