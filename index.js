@@ -27,6 +27,7 @@ prog
     .argument('[types]...', "Types of units to generate:\n" +"mvc".magenta.bold + " | controller | model | middleware | event | timer | service".magenta,["","mvc","controller","model","middleware","event","timer","service"],
         "mvc")
     .option("--crud","Create boilerplate CRUD functionality")
+	.option("--force", "force generation of file even if a file already exists")
     .action(makeCmd)
     .command("set", "Set a Tofu setting for the current project")
     .argument("<option>", "Use tofu show options for a full list")
