@@ -43,7 +43,7 @@ module.exports = {
         else {
             app.set('view engine', config.express.viewEngine); //Set view engine to create dynamic html
         }
-        app.use(morgan('combined', { stream: Logger.stream }));
+        app.use(morgan('short', { stream: Logger.stream }));
         app.use(express.static(config.express.publicFolder)); //Set our Public folder for img/js/css
         app.use(helmet()); //Helmet sets up a lot of security variables
         Logger.verbose("Express Setup Complete");
