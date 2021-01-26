@@ -57,6 +57,22 @@ module.exports = {
                 app.use("/" + router.path, router);
             }
         });
+        if (config.express.api !== "only") {
+            fs.readdirSync(appRoot + "/Controllers").forEach(function (file) {
+                if (file.substr(-3) === '.js') {
+                    let router = require(appRoot + '/Controllers/' + file);
+                    app.use("/" + router.path, router);
+                }
+            });
+        }
+        if (config.express.api === "only" || config.express.api === "yes"){
+            fs.readdirSync(appRoot + "/Controllers/API").forEach(function (file) {
+                if (file.substr(-3) === '.js') {
+                    let router = require(appRoot + '/Controllers/API/' + file);
+                    app.use(config.express.api === "only" ? "/" : "/api/" + router.path, router);
+                }
+            });
+        }
         Logger.verbose("Controller Linking End");
     },
 

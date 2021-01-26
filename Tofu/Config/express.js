@@ -5,5 +5,6 @@ module.exports = {
   publicFolder: appRoot + '/Public',
   forceHTTPS: process.env.FORCE_HTTPS || false,
   viewDir: appRoot + '/Resources/Views',
-  viewEngine: "<VIEW_ENGINE>"
+  viewEngine: "<VIEW_ENGINE>",
+  api: process.env.API || "yes"//yes|only|no
 };
