@@ -28,6 +28,7 @@ prog
         "mvc")
     .option("--crud","Create boilerplate CRUD functionality")
 	.option("--force", "force generation of file even if a file already exists")
+	.option("--api","Make an API Middleware/Controller")
     .action(makeCmd)
     .command("set", "Set a Tofu setting for the current project")
     .argument("<option>", "Use tofu show options for a full list")

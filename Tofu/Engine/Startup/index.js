@@ -69,7 +69,10 @@ module.exports = {
             fs.readdirSync(appRoot + "/Controllers/API").forEach(function (file) {
                 if (file.substr(-3) === '.js') {
                     let router = require(appRoot + '/Controllers/API/' + file);
-                    app.use(config.express.api === "only" ? "/" : "/api/" + router.path, router);
+                    let path = config.express.api === "only" ? "/" : "/api/";
+                    path += router.path
+                    path = path.replace("//","/")
+                    app.use(path, router);
                 }
             });
         }

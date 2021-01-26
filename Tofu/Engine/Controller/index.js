@@ -23,7 +23,7 @@ class Controller {
                 }
                 middleware = null
                 if(fs.existsSync(`${appRoot}/Middleware/Controller/API/${this.constructor.name.split('Controller')[0].charAt(0).toUpperCase()}${this.constructor.name.split('Controller')[0].slice(1)}Middleware.js`)) {
-                    Logger.info("Including Middleware " + `${appRoot}/Middleware/Controller/API/${this.constructor.name.split('Controller')[0].charAt(0).toUpperCase()}${this.constructor.name.split('Controller')[0].slice(1)}Middleware.js`)
+                    Logger.verbose("Including Middleware " + `${appRoot}/Middleware/Controller/API/${this.constructor.name.split('Controller')[0].charAt(0).toUpperCase()}${this.constructor.name.split('Controller')[0].slice(1)}Middleware.js`)
                     middleware = require(`${appRoot}/Middleware/Controller/API/${this.constructor.name.split('Controller')[0].charAt(0).toUpperCase()}${this.constructor.name.split('Controller')[0].slice(1)}Middleware.js`);
                 }
             }
@@ -34,7 +34,7 @@ class Controller {
                 }
                 middleware = null
                 if (fs.existsSync(`${appRoot}/Middleware/Controller/${this.constructor.name.split('Controller')[0].charAt(0).toUpperCase()}${this.constructor.name.split('Controller')[0].slice(1)}Middleware.js`)) {
-                    Logger.info("Including Middleware " + `${appRoot}/Middleware/Controller/${this.constructor.name.split('Controller')[0].charAt(0).toUpperCase()}${this.constructor.name.split('Controller')[0].slice(1)}Middleware.js`)
+                    Logger.verbose("Including Middleware " + `${appRoot}/Middleware/Controller/${this.constructor.name.split('Controller')[0].charAt(0).toUpperCase()}${this.constructor.name.split('Controller')[0].slice(1)}Middleware.js`)
                     middleware = require(`${appRoot}/Middleware/Controller/${this.constructor.name.split('Controller')[0].charAt(0).toUpperCase()}${this.constructor.name.split('Controller')[0].slice(1)}Middleware.js`);
                 }
             }
