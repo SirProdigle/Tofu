@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
+    - name: npm install, test make & run startup
       run: |
         npm install
         npm link
@@ -25,6 +25,9 @@ jobs:
         cd dev
         tofu make beer --api
         tofu make beer
+        tofu make x middleware
+        tofu make Test event
+        tofu make Y timer
         timeout 60s npm start
       env:
         CI: true
