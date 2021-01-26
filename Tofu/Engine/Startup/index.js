@@ -8,25 +8,24 @@ const winston = require('winston');
 const morgan = require("morgan");
 const Logger = require(appRoot + "/Engine/Logger");
 module.exports = {
-    
-    DatabaseStartup: (app) => {
+
+    DatabaseStartup: async (app) => {
         Logger.verbose("Database Startup Begin");
-        if(!config.db.enabled) {
+        if (!config.db.enabled) {
             Logger.warn("Database Disabled, Continuing");
             return;
         }
         const mongoose = require('mongoose');
-        //fixme production mode tofu will error if no db given. Apps may not use db
-        mongoose.connect(config.db.host).catch( (err) => {
+        const promise = mongoose.connect(config.db.host, { useNewUrlParser: true }).catch((e) => {
+            Logger.error(e.message)
             if (process.env.NODE_ENV === "production") {
                 Logger.error("Failed to connect to mongoDB host: " + config.db.host + "\nClosing Down Node Server");
                 process.exit();
-            }
-            else {
+            } else {
                 Logger.error("Failed to connect to mongoDB host: " + config.db.host + "\nContinuing due to development environment");
             }
-            Logger.verbose("Database Setup Complete");
-        });
+        }).then(() => Logger.verbose("Database Setup Complete"))
+        return promise
     },
 
     SetExpressVariables: (app) => {
