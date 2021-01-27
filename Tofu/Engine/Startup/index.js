@@ -30,6 +30,7 @@ module.exports = {
 
     SetExpressVariables: (app) => {
         Logger.verbose("Express Setup Begin");
+        app.use(express.json())
         app.set('views', config.express.viewDir); //Set view path, eg rendering users/index renders path/users/index
         if (config.express.viewEngine === "hbs") {
             const hbs = require('express-hbs');
