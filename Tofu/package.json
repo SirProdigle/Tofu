@@ -4,8 +4,8 @@
   "description": "App created with Tofu",
   "private": true,
   "scripts": {
-    "start": "node Engine/Bin/app.js",
-    "build": ""
+    "start": "nodemon Engine/Bin/app.js",
+    "build": "gulp"
   },
   "author": "Put your name here!",
   "dependencies": {
@@ -32,8 +32,8 @@
     "minimist": "^1.2.5",
     "mongoose": "^5.11.13",
     "morgan": "~1.9.0",
+    "nodemon": "^2.0.7",
     "pug": "^3.0.0",
     "winston": "^3.3.3"
-  "devDependencies": {
   }
 }
