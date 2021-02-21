@@ -1,3 +1,3 @@
 module.exports = {
-    "debug_mode" :  process.env.debug || false
+    "development_mode" :  process.env.NODE_ENV.toLowerCase() === "development"
 };

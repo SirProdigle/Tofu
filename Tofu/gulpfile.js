@@ -14,14 +14,23 @@ const gulp = require("gulp"),
 
 gulp.task("js", () =>
 {
-	return gulp.src(root +'/Resources/JS/*.js')
-		.pipe(sourcemaps.init({largeFile: true}))
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
-		.pipe(uglify())
-		.pipe(concat('bundle.js'))
-		.pipe(sourcemaps.write())
-		.pipe(gulp.dest(root +'/Public/JS'));
+	if (config.general.development_mode) {
+		return gulp.src(root + '/Resources/JS/*.js')
+			.pipe(sourcemaps.init({largeFile: true}))
+			.pipe(jshint())
+			.pipe(jshint.reporter('default'))
+			.pipe(uglify())
+			.pipe(concat('bundle.js'))
+			.pipe(sourcemaps.write())
+			.pipe(gulp.dest(root + '/Public/JS'));
+	}
+	else
+		return gulp.src(root + '/Resources/JS/*.js')
+			.pipe(jshint())
+			.pipe(jshint.reporter('default'))
+			.pipe(uglify())
+			.pipe(concat('bundle.js'))
+			.pipe(gulp.dest(root + '/Public/JS'));
 })
 
 gulp.task("sass", () => {
