@@ -1,7 +1,7 @@
 {
   "name": "tofu",
-  "version": "1.0.0",
-  "description": "An opinionated MVC framework",
+  "version": "0.0.2",
+  "description": "An opinionated MVC framework focusing on automating regular requirements, such as scaffolding,REST API,User system etc. Tofu includes such features as a distributed event system, cron based timers, automatic express linking, a CLI tool to generate new components and controllers, and much more",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -10,7 +10,6 @@
     "tofu": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -22,8 +21,16 @@
     "opinionated",
     "scaffolding"
   ],
-  "author": "Prodigle",
-  "license": "ISC",
+  "author": {
+    "name" : "Prodigle(Liam)"
+  , "email" : "main.prodigle@gmail.com"
+  , "url" : "https://prodigle.dev"
+  },
+  "funding": {
+    "type" : "kofi",
+    "url" : "https://ko-fi.com/prodigle"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/SirProdigle/Tofu/issues"
   },
@@ -35,10 +42,10 @@
     "copy-dir": "^1.3.0",
     "node-cmd": "^3.0.0",
     "npm-programmatic": "0.0.12",
-    "prompt": "^1.0.0",
+    "prompt": "^1.1.0",
     "replace-in-file": "^6.1.0",
     "rimraf": "latest",
     "shelljs": "^0.8.4",
-    "winston": "latest"
+    "winston": "^3.3.3"
   }
 }

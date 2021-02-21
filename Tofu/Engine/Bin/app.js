@@ -13,14 +13,23 @@ const express = require('express'),
 
 
 //Run through all the startup functions defined in Startup/System/Startup.js, they can only take in app as a param for this
-Logger.info("Running Startup");
-for (const startupProcess in startup){
-    startup[startupProcess](app);
-}
+Start()
 
-Logger.info('Running Custom Startup');
-for (const startupProcess in customStartup){
-   Logger.verbose('Custom Startup: ' + customStartup[startupProcess].name);
-    customStartup[startupProcess](app);
+async function Start(){
+    Logger.info("Running Core Startup");
+    let toAwait = []
+    for (const startupProcess in startup) {
+        const returned =startup[startupProcess](app);
+        if (typeof returned?.then === "function") //Check for a promise
+            toAwait.push(returned)
+    }
+    Logger.info("Waiting for core startup to finish...")
+    await Promise.all(toAwait)
+
+    Logger.info('Core Startup Finished');
+    Logger.info("Running Custom Startup")
+    for (const startupProcess in customStartup) {
+        Logger.verbose('Custom Startup: ' + customStartup[startupProcess].name);
+        customStartup[startupProcess](app);
+    }
 }
-Logger.info("Startup Complete");

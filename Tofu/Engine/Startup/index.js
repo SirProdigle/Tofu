@@ -8,29 +8,29 @@ const winston = require('winston');
 const morgan = require("morgan");
 const Logger = require(appRoot + "/Engine/Logger");
 module.exports = {
-    
-    DatabaseStartup: (app) => {
+
+    DatabaseStartup: async (app) => {
         Logger.verbose("Database Startup Begin");
-        if(!config.db.enabled) {
+        if (!config.db.enabled) {
             Logger.warn("Database Disabled, Continuing");
             return;
         }
         const mongoose = require('mongoose');
-        //fixme production mode tofu will error if no db given. Apps may not use db
-        mongoose.connect(config.db.host).catch( (err) => {
+        const promise = mongoose.connect(config.db.host, { useNewUrlParser: true }).catch((e) => {
+            Logger.error(e.message)
             if (process.env.NODE_ENV === "production") {
                 Logger.error("Failed to connect to mongoDB host: " + config.db.host + "\nClosing Down Node Server");
                 process.exit();
-            }
-            else {
+            } else {
                 Logger.error("Failed to connect to mongoDB host: " + config.db.host + "\nContinuing due to development environment");
             }
-            Logger.verbose("Database Setup Complete");
-        });
+        }).then(() => Logger.verbose("Database Setup Complete"))
+        return promise
     },
 
     SetExpressVariables: (app) => {
         Logger.verbose("Express Setup Begin");
+        app.use(express.json())
         app.set('views', config.express.viewDir); //Set view path, eg rendering users/index renders path/users/index
         if (config.express.viewEngine === "hbs") {
             const hbs = require('express-hbs');
@@ -43,7 +43,7 @@ module.exports = {
         else {
             app.set('view engine', config.express.viewEngine); //Set view engine to create dynamic html
         }
-        app.use(morgan('combined', { stream: Logger.stream }));
+        app.use(morgan('short', { stream: Logger.stream }));
         app.use(express.static(config.express.publicFolder)); //Set our Public folder for img/js/css
         app.use(helmet()); //Helmet sets up a lot of security variables
         Logger.verbose("Express Setup Complete");
@@ -57,6 +57,25 @@ module.exports = {
                 app.use("/" + router.path, router);
             }
         });
+        if (config.express.api !== "only") {
+            fs.readdirSync(appRoot + "/Controllers").forEach(function (file) {
+                if (file.substr(-3) === '.js') {
+                    let router = require(appRoot + '/Controllers/' + file);
+                    app.use("/" + router.path, router);
+                }
+            });
+        }
+        if (config.express.api === "only" || config.express.api === "yes"){
+            fs.readdirSync(appRoot + "/Controllers/API").forEach(function (file) {
+                if (file.substr(-3) === '.js') {
+                    let router = require(appRoot + '/Controllers/API/' + file);
+                    let path = config.express.api === "only" ? "/" : "/api/";
+                    path += router.path
+                    path = path.replace("//","/")
+                    app.use(path, router);
+                }
+            });
+        }
         Logger.verbose("Controller Linking End");
     },
 
