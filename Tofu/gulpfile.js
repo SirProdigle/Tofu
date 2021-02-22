@@ -9,7 +9,8 @@ const gulp = require("gulp"),
 	del = require("del"),
 	config = require("./Config"),
 	sourcemaps = require("gulp-sourcemaps"),
-	root = require("app-root-path")
+	root = require("app-root-path"),
+	browserSync = require("browser-sync")
 
 gulp.task("js", () =>
 {
@@ -48,6 +49,21 @@ gulp.task("images", () => {
 gulp.task("clean", async() => {
 	del.sync("Public")
 	cache.clearAll()
+})
+
+gulp.task("browserSync", async () => {
+	browserSync.init({
+		port: 8001,
+		proxy: {
+			target: "http://localhost:8000",
+			ws: true
+		},
+		ui: {
+			port: 8002,
+		},
+		files: "Public/**",
+		notify: false
+	});
 })
 
 gulp.task("default", gulp.series(gulp.series("clean"),gulp.parallel("sass", "images","js")))

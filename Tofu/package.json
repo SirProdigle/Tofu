@@ -5,12 +5,13 @@
   "private": true,
   "scripts": {
     "start": "nodemon Engine/Bin/app.js --ignore './Resources/JS/' --ignore './Public/JS/'",
+    "dev": "gulp browserSync & nodemon Engine/Bin/app.js --ignore './Resources/JS/' --ignore './Public/JS/'",
     "build": "gulp"
   },
   "author": "Put your name here!",
   "dependencies": {
     "app-root-path": "^2.2.1",
-    "browser-refresh": "^1.7.3",
+    "browser-sync": "^2.26.14",
     "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
     "del": "^6.0.0",
@@ -28,6 +29,8 @@
     "gulp-jshint": "^2.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
+    "handlebars": "^4.1.2",
+    "hbs": "^4.1.1",
     "helmet": "^3.23.3",
     "hound": "^1.0.5",
     "http-errors": "~1.6.2",
