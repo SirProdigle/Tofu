@@ -28,6 +28,7 @@ jobs:
         tofu make x middleware
         tofu make Test event
         tofu make Y timer
-        timeout 60s npm start
+        timeout 30s npm start
+        
       env:
         CI: true
