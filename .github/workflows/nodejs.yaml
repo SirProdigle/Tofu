@@ -28,7 +28,7 @@ jobs:
         tofu make x middleware
         tofu make Test event
         tofu make Y timer
-        run: timeout 1m npm start || code=$?; if [[ $code -ne 124 && $code -ne 0 ]]; then exit $code; fi
+        timeout 1m npm start || code=$?; if [[ $code -ne 124 && $code -ne 0 ]]; then exit $code; fi
 
       env:
         CI: true
