@@ -8,6 +8,7 @@ const makeCmd = require('./lib/make');
 const setCmd = require("./lib/set");
 const fs = require("fs");
 const logger = require("./lib/Logger");
+const {spawn} = require("child_process");
 
 prog
     .version('0.0.1')
@@ -33,7 +34,21 @@ prog
     .command("set", "Set a Tofu setting for the current project")
     .argument("<option>", "Use tofu show options for a full list")
     .argument("<value>", "Value to set")
-    .action(setCmd);
+    .action(setCmd)
+	.command('develop', "Run in development mode with browser/asset hot-reload")
+	.action(() => {
+		const command = spawn("npm", ["run", "dev"],{
+			env: {
+				NODE_ENV: "development",
+				PATH: process.env.PATH}
+		});
+		command.stdout.pipe(process.stdout)
+	})
+	.command('start', "A wrapper around npm start")
+	.action(() => {
+		const command = spawn("npm", ["start"]);
+		command.stdout.pipe(process.stdout)
+	});
 
 
 prog.parse(process.argv);
