@@ -28,7 +28,7 @@ jobs:
         tofu make x middleware
         tofu make Test event
         tofu make Y timer
-        timeout 1m npm start || code=$?; if [[ $code -ne 124 && $code -ne 0 ]]; then exit $code; fi
+        npm start & npx wait-on http://127.0.0.1:8000"
 
       env:
         CI: true
