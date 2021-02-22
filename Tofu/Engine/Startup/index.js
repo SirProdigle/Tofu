@@ -7,6 +7,8 @@ const helmet = require("helmet");
 const winston = require('winston');
 const morgan = require("morgan");
 const Logger = require(appRoot + "/Engine/Logger");
+const hound = require("hound")
+const gulp = require(appRoot + "/gulpfile.js")
 module.exports = {
 
     DatabaseStartup: async (app) => {
@@ -116,6 +118,56 @@ module.exports = {
             Logger.verbose('Web Server launched on port ' + config.express.port);
         });
 
+    },
+
+    LiveCompileAssets : (app) => {
+        if (config.general.development_mode) {
+            Logger.verbose("Starting live reload of css/sass/js/image assets")
+
+            sass = hound.watch(`${appRoot}/Resources/SASS`,null)
+            css = hound.watch(`${appRoot}/Resources/CSS`,null)
+            images = hound.watch(`${appRoot}/Resources/Images`,null)
+            js = hound.watch(`${appRoot}/Resources/JS`,null)
+
+            sass.on('change', (dir) => {
+                Logger.verbose("Reloading Asset")
+                gulp.series(gulp.task('sass'))()
+            })
+            sass.on('create', (dir) => {
+                Logger.verbose("Reloading Asset")
+                gulp.series(gulp.task('sass'))()
+            })
+
+            css.on('change', (dir) => {
+                Logger.verbose("Reloading Asset")
+                gulp.series(gulp.task('sass'))()
+            })
+            css.on('create', (dir) => {
+                Logger.verbose("Reloading Asset")
+                gulp.series(gulp.task('sass'))()
+            })
+
+            images.on('change', (dir) => {
+                Logger.verbose("Reloading Asset")
+                gulp.series(gulp.task('images'))()
+            })
+            images.on('create', (dir) => {
+                Logger.verbose("Reloading Asset")
+                gulp.series(gulp.task('images'))()
+            })
+
+            js.on('change', (dir) => {
+                Logger.verbose("Reloading Asset")
+                gulp.series(gulp.task('js'))()
+            })
+            js.on('create', (dir) => {
+                Logger.verbose("Reloading Asset")
+                gulp.series(gulp.task('js'))()
+            })
+
+
+
+        }
     }
 
 

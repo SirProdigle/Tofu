@@ -7,7 +7,6 @@ const gulp = require("gulp"),
 	imagemin = require("gulp-imagemin"),
 	cache = require("gulp-cache"),
 	del = require("del"),
-	runSequence = require("run-sequence"),
 	config = require("./Config"),
 	sourcemaps = require("gulp-sourcemaps"),
 	root = require("app-root-path")
@@ -48,6 +47,9 @@ gulp.task("images", () => {
 })
 gulp.task("clean", async() => {
 	del.sync("Public")
+	cache.clearAll()
 })
 
 gulp.task("default", gulp.series(gulp.series("clean"),gulp.parallel("sass", "images","js")))
+
+module.exports = gulp
