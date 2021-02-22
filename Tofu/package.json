@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon Engine/Bin/app.js --ignore './Resources/JS/' --ignore './Public/JS/'",
     "dev": "gulp browserSync & nodemon Engine/Bin/app.js --ignore './Resources/JS/' --ignore './Public/JS/'",
-    "build": "gulp"
+    "build": "gulp",
+    "test": "ava"
   },
   "author": "Put your name here!",
   "dependencies": {
@@ -43,5 +44,9 @@
     "nodemon": "^2.0.7",
     "pug": "^3.0.0",
     "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "axios": "^0.21.1",
   }
 }

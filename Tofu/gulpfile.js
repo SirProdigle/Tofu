@@ -5,6 +5,7 @@ const gulp = require("gulp"),
 	sass = require("gulp-dart-sass"),
 	cssnano = require("gulp-cssnano"),
 	imagemin = require("gulp-imagemin"),
+	babel = require("gulp-babel")
 	cache = require("gulp-cache"),
 	del = require("del"),
 	config = require("./Config"),
@@ -19,6 +20,7 @@ gulp.task("js", () =>
 			.pipe(sourcemaps.init({largeFile: true}))
 			.pipe(jshint())
 			.pipe(jshint.reporter('default'))
+			.pipe(babel())
 			.pipe(uglify())
 			.pipe(concat('bundle.js'))
 			.pipe(sourcemaps.write())
@@ -28,6 +30,7 @@ gulp.task("js", () =>
 		return gulp.src(root + '/Resources/JS/*.js')
 			.pipe(jshint())
 			.pipe(jshint.reporter('default'))
+			.pipe(babel())
 			.pipe(uglify())
 			.pipe(concat('bundle.js'))
 			.pipe(gulp.dest(root + '/Public/JS'));
