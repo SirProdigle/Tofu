@@ -38,7 +38,8 @@ module.exports = {
             const hbs = require('express-hbs');
             // Use `.hbs` for extensions and find partials in `views/partials`.
             app.engine('hbs', hbs.express4({
-                partialsDir: config.express.viewDir + '/Partials'
+                partialsDir: config.express.viewDir + '/Partials',
+                defaultLayout: "default", layoutsDir: config.express.viewDir + "/Templates"
             }));
             app.set('view engine', 'hbs');
         }
