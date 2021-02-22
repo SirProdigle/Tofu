@@ -61,7 +61,7 @@ gulp.task("browserSync", async () => {
 		ui: {
 			port: 8002,
 		},
-		files: "Public/**",
+		files: ["Public/**","Resources/Views/**"],
 		notify: false
 	});
 })

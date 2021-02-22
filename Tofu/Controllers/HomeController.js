@@ -6,7 +6,7 @@ const Controller = require(`${appRoot}/Engine/Controller`);
             super('/');
             
             this.router.get('/', (req, res) => {
-                res.send("Welcome to Tofu!");
+                res.render("index");
             });
         
         }

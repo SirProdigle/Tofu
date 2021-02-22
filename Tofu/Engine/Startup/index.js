@@ -39,7 +39,7 @@ module.exports = {
             // Use `.hbs` for extensions and find partials in `views/partials`.
             app.engine('hbs', hbs.express4({
                 partialsDir: config.express.viewDir + '/Partials',
-                defaultLayout: "default", layoutsDir: config.express.viewDir + "/Templates"
+                layoutsDir: config.express.viewDir + "/Templates", defaultLayout: config.express.viewDir + "/Templates/default"
             }));
             app.set('view engine', 'hbs');
         }
