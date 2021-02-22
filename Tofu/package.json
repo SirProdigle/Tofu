@@ -10,6 +10,7 @@
   "author": "Put your name here!",
   "dependencies": {
     "app-root-path": "^2.2.1",
+    "browser-refresh": "^1.7.3",
     "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
     "del": "^6.0.0",

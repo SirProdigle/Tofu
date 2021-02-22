@@ -112,14 +112,6 @@ module.exports = {
 
     },
 
-    StartWebServer: (app) => {
-        Logger.verbose("Starting Web Server");
-        http.createServer(app).listen(config.express.port,"localhost", function () {
-            Logger.verbose('Web Server launched on port ' + config.express.port);
-        });
-
-    },
-
     LiveCompileAssets : (app) => {
         if (config.general.development_mode) {
             Logger.verbose("Starting live reload of css/sass/js/image assets")
@@ -168,6 +160,17 @@ module.exports = {
 
 
         }
+    },
+
+    StartWebServer: (app) => {
+        Logger.verbose("Starting Web Server");
+        http.createServer(app).listen(config.express.port,"localhost", function () {
+            Logger.verbose('Web Server launched on port ' + config.express.port);
+            if (process.send) {
+                process.send('online');
+            }
+        });
+
     }
 
 
