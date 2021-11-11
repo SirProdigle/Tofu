@@ -12,6 +12,9 @@ class Controller {
             Logger.error(`No controller path found in ${this.constructor.name}::super(). Expects e.g super("blogs")`);
             process.exit(1);
         }
+        else if (path == '/') {
+            path = '' //If we allow '/' as a prefix then all subsequent routes become '//thing'
+        }
         this.router = express.Router([]);
         this.router.path = path;
         try {
