@@ -51,7 +51,7 @@ gulp.task("images", () => {
 })
 gulp.task("clean", async() => {
 	del.sync("Public")
-	cache.clearAll()
+	await cache.clearAll()
 })
 
 gulp.task("browserSync", async () => {
