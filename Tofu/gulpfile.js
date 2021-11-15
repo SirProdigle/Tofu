@@ -4,7 +4,6 @@ const gulp = require("gulp"),
 	jshint = require("gulp-jshint"),
 	sass = require("gulp-dart-sass"),
 	cssnano = require("gulp-cssnano"),
-	imagemin = require("gulp-imagemin"),
 	babel = require("gulp-babel")
 	cache = require("gulp-cache"),
 	del = require("del"),
@@ -12,6 +11,8 @@ const gulp = require("gulp"),
 	sourcemaps = require("gulp-sourcemaps"),
 	root = require("app-root-path"),
 	browserSync = require("browser-sync")
+
+const imagemin = import("gulp-imagemin")
 
 gulp.task("js", () =>
 {
