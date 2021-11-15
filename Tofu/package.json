@@ -4,7 +4,7 @@
   "description": "App created with Tofu",
   "private": true,
   "scripts": {
-    "start": "nodemon Engine/Bin/app.js --ignore './Resources/JS/' --ignore './Public/JS/'",
+    "start": "<COMMAND>",
     "dev": "gulp browserSync & nodemon Engine/Bin/app.js --ignore './Resources/JS/' --ignore './Public/JS/'",
     "build": "gulp",
     "test": "ava"
@@ -40,8 +40,6 @@
     "minimist": "^1.2.5",
     "mongoose": "^6.0.12",
     "morgan": "~1.10.0",
-    "nodemon": "^2.0.15",
-    "pm2": "^5.1.2",
     "pug": "^3.0.2",
     "validator": "^13.7.0",
     "winston": "^3.3.3"

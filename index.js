@@ -17,6 +17,7 @@ prog
     .argument("<name>", "Name of the project being created")
     .option("--no-examples","Create Tofu project without examples") //Options are checked as options['noExamples']
     .argument("[viewEngine]", "View engine being used\n" + "hbs".magenta.bold + " | pug | ejs | none".magenta, null,"hbs")
+	.argument("[manager]","Install alongside a production hypervisor\n" + "pm2".magenta.bold + " | nodemon | none".magenta,null,"pm2")
     .action(createCmd)
     .command("show engines", "Show list of supported view engines")
     .action(enginesCmd)
