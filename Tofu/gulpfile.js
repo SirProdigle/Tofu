@@ -56,7 +56,7 @@ gulp.task("clean", async() => {
 })
 
 gulp.task("browserSync", async () => {
-	browserSync.init({
+	browserSync({
 		port: 8001,
 		proxy: {
 			target: "http://localhost:8000",
@@ -66,7 +66,7 @@ gulp.task("browserSync", async () => {
 			port: 8002,
 		},
 		files: ["Public/**","Resources/Views/**"],
-		notify: false
+		notify: true,
 	});
 })
 

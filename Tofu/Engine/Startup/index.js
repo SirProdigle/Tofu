@@ -55,6 +55,16 @@ module.exports = {
         Logger.verbose("Express Setup Complete");
     },
 
+    AllowInlineScriptsInDev: (app) => {
+        if(config.general.development_mode) {
+            Logger.verbose("Allowing inline scripts")
+            app.use(function(req, res, next) {
+                res.header('Content-Security-Policy',"'unsafe-inline'")
+                next();
+            });
+        }
+    },
+
     LinkControllers: (app) => {
         Logger.verbose("Controller Linking Begin");
         fs.readdirSync(appRoot + "/Controllers").forEach(function (file) {
