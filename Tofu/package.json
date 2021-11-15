@@ -20,6 +20,7 @@
     "dotenv": "^10.0.0",
     "env": "0.0.2",
     "express": "~4.17.1",
+    "express-fileupload": "^1.2.1",
     "express-hbs": "^2.4.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
