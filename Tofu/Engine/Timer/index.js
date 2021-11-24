@@ -5,6 +5,7 @@ const TUtils = require("./Utils");
 
 class Timer {
     static ACTIVE_TIMERS = {};
+    static methods = TUtils
 
     running = false;
 

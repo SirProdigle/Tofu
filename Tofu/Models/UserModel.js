@@ -51,6 +51,7 @@ UserSchema.pre('save', async function(next) {
     });
 });
 
+//TODO unsure if this actually works since we're generating a salt?
 UserSchema.methods.CheckPassword = async (testingPassword) => {
     await bcrypt.compare(testingPassword, this.password)
         .catch(err => Logger.error(err))

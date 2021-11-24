@@ -5,12 +5,13 @@ class TestTimer extends Timer{
     //All values below are default values, they are overridden using the constructor parameters
     time = "100"; //Default time value (ms)
     options = {
-        interval: true,
-        immediate: false
+        interval: true, //Continuous timer
+        immediate: false //Do not start timer immediately
     };
     requiredKeys = [
-        "msg"
+        "msg" //timer must include this key in data to be valid
     ];
+
     //For default data in the Timer
     data = {
         msg: "This is a default message for the UserEmailTimer"
