@@ -1,6 +1,6 @@
 {
   "name": "tofu",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An opinionated MVC framework focusing on automating regular requirements, such as scaffolding,REST API,User system etc. Tofu includes such features as a distributed event system, cron based timers, automatic express linking, a CLI tool to generate new components and controllers, and much more",
   "main": "index.js",
   "directories": {
