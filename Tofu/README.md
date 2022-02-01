@@ -16,7 +16,7 @@ Tofu is an MVC framework for NodeJS heavily influenced by PHP Laravel. Tofu is p
 *   Automatic/Custom routing options to make routing simpler for small projects
 
 
-#Use
+### Use
 You can use Tofu by npm installing it! If you simply download these files, it will work but you won't have access to the console commands as they require npm link.
 
 ### Console Commands
