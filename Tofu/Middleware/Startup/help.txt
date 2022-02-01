@@ -1,0 +1,2 @@
+Applies at the base level of express, e.g before any routing or controller code is ever touched
+Examples include IP bans, etc.
