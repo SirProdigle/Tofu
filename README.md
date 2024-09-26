@@ -1,7 +1,3 @@
-I apologize for the oversight. You're right that we should ensure every claim is accurate based on the actual code. Let me review the claims made against the provided codebase and revise the README accordingly.
-
-After careful review, here's a more accurate representation of Tofu's features:
-
 # Tofu 🍢
 
 [![Documentation Status](https://readthedocs.org/projects/tofujs/badge/?version=latest)](https://tofujs.readthedocs.io/en/latest/?badge=latest)
