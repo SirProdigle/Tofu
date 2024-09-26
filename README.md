@@ -1,6 +1,5 @@
 # Tofu 🍢
 
-[![Documentation Status](https://readthedocs.org/projects/tofujs/badge/?version=latest)](https://tofujs.readthedocs.io/en/latest/?badge=latest)
 [![Node.js CI](https://github.com/SirProdigle/Tofu/workflows/Node.js/badge.svg)](https://github.com/SirProdigle/Tofu/actions?query=workflow%3ANode.js)
 [![npm version](https://badge.fury.io/js/tofu.svg)](https://badge.fury.io/js/tofu)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -92,7 +91,7 @@ Tofu includes a basic test setup using AVA.
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for more details.
+We welcome contributions!
 
 ## 💖 Support
 
